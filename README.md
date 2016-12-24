@@ -9,7 +9,7 @@ iOS越狱就是发现iOS设备硬件或者软件的漏洞，获取更高的系�
 查看iPhone的整个文件系统，通过工具iFunbox
 - application下安装的是APP  
 - Library  
-- 通过Cydia安装不被AppStore接受的软件 openSSH(SecureShell)、Cyscrip  
+- 通过Cydia安装不被AppStore接受的软件 openSSH(SecureShell)、Cycrip  
 - 反编译某个APP的源代码  
 - 通过Reveal查看别人的APP是怎样实现的  
 
@@ -34,5 +34,31 @@ iOS越狱就是发现iOS设备硬件或者软件的漏洞，获取更高的系�
 第三， 另起终端，执行命令ssh root@localhost –p 2222,然后提示输入密码，这是手机的密码，默认为alpine。
 
 最后，此时，同样可以达到ssh访问手机的效果，而且比WiFi更快更稳定  
-### Cyscrip  
+### Cycrip  
+Cycript是由Cydia创始人Saurik推出的一款脚本语言，Cycript 混合了Objective-C与javascript语法的解释器，这意味着我们能够在一个命令中用Objective-C或者javascript，甚至两者兼用。
+它能够挂钩正在运行的进程，能够在运行时修改应用的很多东西。
+
+Cycript的安装简单，可在越狱设备上从Cydia自带源Cydia/Telesphoreo下载，直接打开设备上的Cydia然后搜索Cycript后安装即可。  
+#### 基本使用
+安装：可以在Cydia里搜索cycript来下载安装，可以配合MTerminal使用。
+
+输入`cycript`，出现` cy#`提示符，说明已经成功启动Cycript。
+
+`control+D`，来退出Cydia.
+
+*********下面以SpringBoard为例*******
+找到SpringBoard进程
+
+获取到进程的id是 1181 ,然后用 cycript - p或cycript -p 命令注入这个进程
+
+
+想要在SpringBoard界面弹出一个提示框，用cycript的话，只要两句代码就可以了，而且是实时注入的。
+```  
+cy# alertView = [[UIAlertView alloc] initWithTitle:@"test" message:@"Cyrill" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]
+#"<UIAlertView: 0x156f9f0a0; frame = (0 0; 0 0); layer = <CALayer: 0x156f96fc0>>"
+cy# [alertView show]  
+```  
+参考链接：http://www.jianshu.com/p/56faacf24feb  
+
+
 
