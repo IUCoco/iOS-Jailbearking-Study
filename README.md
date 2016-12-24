@@ -60,5 +60,5 @@ cy# [alertView show]
 ```  
 参考链接：http://www.jianshu.com/p/56faacf24feb  
 
-
-
+### Reveal  
+Reveal可以查看其他APP的实现方式，必须越狱才行。在越狱的手机的Cydia中下载reveal loader，在设置里面选择将要在pc端检测的App即可配合使用  
